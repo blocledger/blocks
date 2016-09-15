@@ -2,23 +2,25 @@
   "transactions": [
     {
       "transaction": {
-        "type": "CHAINCODE_INVOKE",
+        "type": "CHAINCODE_DEPLOY",
         "chaincodeID": {
           "path": "",
-          "name": "56a1ba4a02f5c4d9c58b8279b2a2c5f610ece5e6fc09378c069654ce1ef7a013876e6544ce8f2e5831d41bc94497e57de3abf04916db6847d33ec287f14ef76f"
+          "name": "84ff864d6c34bf16a1e2dfb2baa54b58640d7c17dcc7dc6872989a8606c97073"
         },
         "payload": {
           "chaincodeSpec": {
             "type": 1,
             "chaincodeID": {
               "path": "",
-              "name": "56a1ba4a02f5c4d9c58b8279b2a2c5f610ece5e6fc09378c069654ce1ef7a013876e6544ce8f2e5831d41bc94497e57de3abf04916db6847d33ec287f14ef76f"
+              "name": "84ff864d6c34bf16a1e2dfb2baa54b58640d7c17dcc7dc6872989a8606c97073"
             },
             "ctorMsg": {
               "args": [
-                "new",
+                "init",
                 "a",
-                "100"
+                "100",
+                "b",
+                "200"
               ]
             },
             "timeout": 0,
@@ -37,15 +39,27 @@
             },
             "attributes": []
           },
-          "idGenerationAlg": ""
+          "effectiveDate": null,
+          "codePackage": {
+            "buffer": {
+              "type": "Buffer",
+              "data": []
+            },
+            "offset": 0,
+            "markedOffset": -1,
+            "limit": 0,
+            "littleEndian": false,
+            "noAssert": false
+          },
+          "execEnv": 0
         },
-        "txid": "2f6c1ad3-f3cf-4ceb-ae16-2bb09034b281",
+        "txid": "334c9037-1081-46f1-b9e2-0de16ce3d2e3",
         "timestamp": {
-          "seconds": 1473466530
+          "seconds": 1473725803
         },
-        "nonce": "2hTVWoqunt/ocKvCRFXj7EY+LsEqOcwt",
-        "cert": "MIICUTCCAfegAwIBAgIQNBTXWpYhRHmYLUeog6a9bTAKBggqhkjOPQQDAzAxMQswCQYDVQQGEwJVUzEUMBIGA1UEChMLSHlwZXJsZWRnZXIxDDAKBgNVBAMTA3RjYTAeFw0xNjA5MDkyMzU5MjBaFw0xNjEyMDgyMzU5MjBaMEUxCzAJBgNVBAYTAlVTMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEgMB4GA1UEAxMXVHJhbnNhY3Rpb24gQ2VydGlmaWNhdGUwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAARXB7E6ABCYiuuLtixWkLae306Wf0FfCRDOvsRH6eP/bYHknzrq3MQSMTr+qFqGUT7Q6jl6QyCdar5cmqYogtJdo4HcMIHZMA4GA1UdDwEB/wQEAwIHgDAMBgNVHRMBAf8EAjAAMA0GA1UdDgQGBAQBAgMEMA8GA1UdIwQIMAaABAECAwQwTQYGKgMEBQYHAQH/BECB3Ux+S9clgvQz8tDNcu6Yj453Zj5HtquB6igj1TUGpmLv3KHJjHZUruYS+xg2ynNEu4qpSPsdhVNAmbtwklUkMEoGBioDBAUGCARATpFBfM4LT25mCft44BM/I81WYkZ3zL+6d+Z6cWkS2ohcM8TU8oLjNmWmcjyv0oIk21v5MLaAKCmHG5tNVa486DAKBggqhkjOPQQDAwNIADBFAiBpeCQTft2F6uKCS6cUTLR8lEoK7tGTpQvvkvZ76JqeEAIhAI46sZJymhFfA5wbmll2u2vRyCzuY64RTn6ZoHb6lWaG",
-        "signature": "MEUCIHuV1l41SSWb2Hx9xPYlMMk424vnW7T2GYGa/rfxPtZMAiEAvU7DxssPjppjI77P/UbkX7fOX5y5zwemjZXf7hR0Ogg="
+        "nonce": "LzbyYncYBbwctlTTL7Bti3FhoDJTzC4C",
+        "cert": "MIICUzCCAfigAwIBAgIRAPpcmEftEEiwpv5FRjzd9tMwCgYIKoZIzj0EAwMwMTELMAkGA1UEBhMCVVMxFDASBgNVBAoTC0h5cGVybGVkZ2VyMQwwCgYDVQQDEwN0Y2EwHhcNMTYwOTEzMDAxNTM1WhcNMTYxMjEyMDAxNTM1WjBFMQswCQYDVQQGEwJVUzEUMBIGA1UEChMLSHlwZXJsZWRnZXIxIDAeBgNVBAMTF1RyYW5zYWN0aW9uIENlcnRpZmljYXRlMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE2bmbe43vqPyTr313wfmqhTkQ8MW/4HedxV7TMew4WkYuTCPOG9fu9eG70sb+7kHAaHI9XdtrfLA1Ap2BnYf0/KOB3DCB2TAOBgNVHQ8BAf8EBAMCB4AwDAYDVR0TAQH/BAIwADANBgNVHQ4EBgQEAQIDBDAPBgNVHSMECDAGgAQBAgMEME0GBioDBAUGBwEB/wRAYbRBZa3W1OoR3CHD1zJLZN5dYtOEmAHoqAJBz+USdTspLR3nLXipIxcXTAIOvsDJRUTWuyfR5yshfLNCwWl3pDBKBgYqAwQFBggEQM8P8mUF6XigF2z76MFE3m4dfZRoUI1GocseQrxhzJfVjWEBIDpbX1+YDSJ9xKJYnKzGhD8X1Mw64XG76xN2ThUwCgYIKoZIzj0EAwMDSQAwRgIhALpVqaSFQiLm16lp+tCqP4JcF35vDhMT1C+QRtOpdescAiEA9Jd2XeTHW17cpvHvdfA85Ri6szHLCQuc5tXto3rBeIo=",
+        "signature": "MEQCIFbljShW5/b9SH67vhWUK22SqLLkx6yciD3vy7zqh8spAiBBjOpfdTciDdmxOT7DWXecHMX21eoL2mnYtV+u1BCtbQ=="
       },
       "result": "TBD"
     },

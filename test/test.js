@@ -1,7 +1,8 @@
 var assert = require('chai').assert;
-var request =require('superagent');
+var request = require('superagent');
 var util = require('../util.js');
 var validBlock = require('./valid-block.json');
+var deployBlock = require('./deploy-block.json');
 var transactions = require('./transactions.json').transactions;
 var url = 'http://localhost:3000';
 
@@ -20,6 +21,19 @@ describe('ProtoBuf', function() {
       // console.log(payload.chaincodeSpec.ctorMsg.args);
       // assert.equal(payload.chaincodeSpec.ctorMsg.args, 'delete',
       // 'the function should be a delete');
+    });
+  });
+  describe('decode deploy transaction', function() {
+    it('should decode a deploy transaction', function() {
+      // console.log('deploy block');
+      // console.log(deployBlock);
+      // console.log('====================\n\n');
+      var payload = util.decodePayload(deployBlock.transactions[0]);
+      // console.log('\n \n==================== \ndeploy payload');
+      // console.log(payload);
+      // console.log(payload.chaincodeSpec.ctorMsg.args);
+      assert.isObject(payload, 'deploy transaction decodes to an object');
+
     });
   });
   //test the decodeChaincodeID function
