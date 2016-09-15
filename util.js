@@ -21,13 +21,12 @@ var Q = require('q');
 
 var decodePayload = function(transaction) {
   var payload;
-
   switch (transaction.type) {
     case 'CHAINCODE_DEPLOY':
     case 1:
       try {
-        var toVal = transaction.toValidators;
-        payload = PROTOS.ChaincodeDeploymentSpec.decode64(toVal);
+        var buf = transaction.payload;
+        payload = PROTOS.ChaincodeDeploymentSpec.decode64(buf);
       } catch (e) {
         if (e.decoded) { // Truncated
           console.log('payload was truncated');

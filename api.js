@@ -568,15 +568,17 @@ app.get('/userHistory/:user', function(req, res) {
   };
   for (var i = 0; i < len; i++) {
     var block = blockList[i].block;
-    var transLen = block.transactions.length;
-    for (var j = 0; j < transLen; j++) {
-      if (block.transactions[j].payload && findUser(block.transactions[j])) {
-        var tx = block.transactions[j];
-        //var result = block.nonHashData.transactionResults.find(findUUID);
-        var result = 'TBD';
-        var newBalance = util.calcBalance(tx, result, user, balance);
-        list.push({transaction: tx, result: result, balance: newBalance});
-        balance = newBalance;
+    if (block.transactions) {
+      var transLen = block.transactions.length;
+      for (var j = 0; j < transLen; j++) {
+        if (block.transactions[j].payload && findUser(block.transactions[j])) {
+          var tx = block.transactions[j];
+          //var result = block.nonHashData.transactionResults.find(findUUID);
+          var result = 'TBD';
+          var newBalance = util.calcBalance(tx, result, user, balance);
+          list.push({transaction: tx, result: result, balance: newBalance});
+          balance = newBalance;
+        }
       }
     }
   }
