@@ -112,8 +112,7 @@ cd ../../..
 go build
 ```
 
-Now copy the whole blocks_chaincode directory back to windows and put in `
-$GOPATH/src/github.com`
+Now copy the whole blocks_chaincode directory back to windows and put it in `$GOPATH/src/github.com`
 
 **NOTE:** The Vagrant steps were gleaned from fabric/sdk/node/bin/run-unit-tests.sh.
 
