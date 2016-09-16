@@ -114,6 +114,8 @@ go build
 
 Now copy the whole blocks_chaincode directory back to windows and put it in `$GOPATH/src/github.com`
 
+To invoke the deploy from your browser go to URL `localhost:3000/deploy`
+
 **NOTE:** The Vagrant steps were gleaned from fabric/sdk/node/bin/run-unit-tests.sh.
 
 ## Deploying chaincode with the REST interface
@@ -174,6 +176,13 @@ To run both the linter and code style checker run `gulp` with no parameters.
 To run testing that will generate transactions and exercise all of the server
 capabilities run `gulp test`.
 
+## Debugging
+Turn additional debug prints and/or GRPC tracing with
+```
+DEBUG=hfc,blocks node api.js
+  or
+DEBUG=hfc,blocks GRPC_TRACE=all node api.js
+```
 ## Acknowledgement
 This project was based heavily on the IBM Marbles example and the Hyperledger
  [fabric](https://github.com/hyperledger/fabric) project.
