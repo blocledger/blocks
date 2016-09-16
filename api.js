@@ -13,7 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-
+//process.env['DEBUG'] = 'blocks,hfc'  //use this instead of setting DEBUG on the command line
+//process.env['GRPC_TRACE'] = 'all'  //turns on grpc tracing
 var app = require('express')();
 var morgan = require('morgan');
 var bodyparser = require('body-parser');
