@@ -13,6 +13,7 @@ transactions use the SDK.
 ```
 npm install -g gulp
 npm install -g mocha
+npm install
 ```
 
 
@@ -92,9 +93,33 @@ in.
 
 At this point you can connect from a browser using `http://localhost:3000`
 
-## Manually deploy the chaincode
-Until the SDK deploy function is working use the REST interface to deploy
-the chaincode from the Github repository.  The postman app works well for this.
+## Deploying chaincode with the SDK in windows
+This is the current workaround for deploying chaincode from a node app running
+under windows with the SDK.  The basic approach here is to create the chaincode
+in the Vagrant environment and build it.  Then copy the whole directory back
+to windows.
+
+Inside the Vagrant environment do the following.
+```
+cd $GOPATH/src/github.com/
+git clone https://github.com/blocledger/blocks_chaincode.git
+cd blocks_chaincode
+mkdir -p vendor/github.com/hyperledger
+cd vendor/github.com/hyperledger
+cp -r $GOPATH/src/github.com/hyperledger/fabric .
+cp -r fabric/vendor/github.com/op ..
+cd ../../..
+go build
+```
+
+Now copy the whole blocks_chaincode directory back to windows and put in `
+$GOPATH/src/github.com`
+
+**NOTE:** The Vagrant steps were gleaned from fabric/sdk/node/bin/run-unit-tests.sh.
+
+## Deploying chaincode with the REST interface
+Alternatively the REST interface can be used to deploy the chaincode from
+the Github repository.  The postman app works well for this.
 
 First step is to register one of the users defined in the membersrvc.yaml file.
 ```
