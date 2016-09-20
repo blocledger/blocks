@@ -13,6 +13,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+process.env['GOPATH'] = '/go';
+//process.env['DEBUG'] = 'blocks,hfc';  //use this instead of setting DEBUG on the command line
+//process.env['GRPC_TRACE'] = 'all';  //turns on grpc tracing
 
 var app = require('express')();
 var morgan = require('morgan');
@@ -79,7 +82,8 @@ store.getValue('chaincodeID', function(err, value) {
 
 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 // load bluemix credentials from file-based
-var cred = require('./cred-blockchain-ma.json');
+//var cred = require('./cred-blockchain-ma.json');
+var cred = require('./cred-blockchain-ks.json');
 var grpc = 'grpcs://';
 
 //  local config no TLS
@@ -436,7 +440,7 @@ setInterval(function() {
       console.log('Error updating the chain height ' + response.error);
     });
   }
-}, 60000);
+}, 10000);
 
 app.get('/chain', function(req, res) {
   debug('Display chain stats');
