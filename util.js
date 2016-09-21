@@ -2,10 +2,10 @@ var debug = require('debug')('blocks');
 var ProtoBuf = require('protobufjs');
 
 // use the hfc protos once hfc has been released for fabric 0.6
-// var builder = ProtoBuf.loadProtoFile(
-//               './node_modules/hfc/lib/protos/fabric.proto');    // Creates the Builder
+var builder = ProtoBuf.loadProtoFile(
+              './node_modules/hfc/lib/protos/fabric.proto');    // Creates the Builder
 // jscs:disable maximumLineLength
-var builder = ProtoBuf.loadProtoFile('C:/Users/Eric/Documents/Projects/BlockChain/go/src/github.com/hyperledger/fabric/sdk/node/lib/protos/fabric.proto');
+// var builder = ProtoBuf.loadProtoFile('C:/Users/Eric/Documents/Projects/BlockChain/go/src/github.com/hyperledger/fabric/sdk/node/lib/protos/fabric.proto');
 // jscs:enable maximumLineLength
 var PROTOS = builder.build('protos');                            // Returns just the 'js' namespace if that's all we need
 var rest = require('rest');
@@ -13,7 +13,8 @@ var mime = require('rest/interceptor/mime');
 var errorCode = require('rest/interceptor/errorCode');
 var restClient = rest.wrap(mime).wrap(errorCode, {code: 400});
 // var cred = require('./cred-blockchain-ma.json');
-var cred = require('./cred-local.json');
+// var cred = require('./cred-local.json');
+var cred = require('./cred-docker.json');
 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 var restUrl = cred.peers[0].api_url;
 // jscs:enable requireCamelCaseOrUpperCaseIdentifiers

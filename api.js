@@ -25,9 +25,9 @@ var util = require('./util.js');
 //var ByteBuffer = require("bytebuffer");
 //var hexy = require('hexy');
 var Q = require('q');
-// var hlc = require('hfc');
+var hlc = require('hfc');
 // jscs:disable maximumLineLength
-var hlc = require('C:/Users/Eric/Documents/Projects/BlockChain/go/src/github.com/hyperledger/fabric/sdk/node/');
+// var hlc = require('C:/Users/Eric/Documents/Projects/BlockChain/go/src/github.com/hyperledger/fabric/sdk/node/');
 // jscs:enable maximumLineLength
 var debug = require('debug')('blocks');
 var rest = require('rest');
@@ -89,7 +89,8 @@ store.getValue('chaincodeID', function(err, value) {
 // var grpc = 'grpcs://';
 
 //  local config no TLS
-var cred = require('./cred-local.json');
+// var cred = require('./cred-local.json');
+var cred = require('./cred-docker.json');
 var grpc = 'grpc://';
 
 // URL for the REST interface to the peer
@@ -456,7 +457,7 @@ setInterval(function() {
       console.log('Error updating the chain height ' + response.error);
     });
   }
-}, 60000);
+}, 10000);
 
 app.get('/chain', function(req, res) {
   debug('Display chain stats');
